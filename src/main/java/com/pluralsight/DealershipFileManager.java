@@ -1,14 +1,12 @@
 package com.pluralsight;
 
 import java.io.*;
-import java.util.AbstractList;
-import java.util.ArrayList;
 
 public class DealershipFileManager {
 
-    // File Reader and Writer:
+    // File Reader
 
-    public Dealership getDealership() {
+    public void getDealership() {
         Dealership dealership = null;  // Recognizes dealership as null.
 
         try {
@@ -27,7 +25,9 @@ public class DealershipFileManager {
 
                 // Step 3: Uses the details above to create a Dealership object.
                 dealership = new Dealership(name, address, phone);
+                System.out.println(dealership);
             }
+
 // ----------------------------------------------------------------------------------------------------
             // Step 4: Read the remaining lines for vehicles
             while ((lineFromString = bufferedReader.readLine()) != null) {
@@ -49,6 +49,7 @@ public class DealershipFileManager {
                 // Step 6: Add the Vehicle to the Dealership's inventory
                 assert dealership != null;
                 dealership.getInventory().add(vehicle);
+                System.out.println(vehicle);
             }
 
             // Step 7: Close the readers
@@ -59,10 +60,11 @@ public class DealershipFileManager {
             System.out.println("Something went wrong..");
         }
 
-        return dealership;
     }
+
 // ----------------------------------------------------------------------------------------------------
 
+    // File Writer:
     private static void saveDealership(Dealership inventory){
 
         // ALL OF THIS WILL NEED UPDATING:
