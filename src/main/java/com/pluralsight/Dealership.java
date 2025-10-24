@@ -1,22 +1,20 @@
 package com.pluralsight;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Dealership {
 
     private String name;
     private String address;
     private String phone;
-
-// -----------------------------------------------------------------------
-    // Constructors:
+    private ArrayList<Vehicle> inventory;
 
 
-    public Dealership(String name, String address, String phone) {
+    public Dealership(String name, String address, String phone, ArrayList<Vehicle> inventory) {
         this.name = name;
         this.address = address;
         this.phone = phone;
+        this.inventory = new ArrayList<>();
     }
 
     public String getName() {
@@ -34,13 +32,71 @@ public class Dealership {
     }
 
 
-    private ArrayList<Vehicle> inventory;
+    public List<Vehicle> getVehicleByPrice(double min, double max){
+        ArrayList<Vehicle> result = new ArrayList<>();
 
-
-// -----------------------------------------------------------------------
-
-    Dealership(String name, String address, String phone){
-        List<Vehicle>
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getPrice() >= min && vehicle.getPrice() <= max){
+                result.add(vehicle);
+            }
+        }
+        return result;
     }
+
+    public List<Vehicle> getVehicleByMakeModel(String make, String model){
+        ArrayList<Vehicle> result = new ArrayList<>();
+
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)){
+                result.add(vehicle);
+            }
+        }
+        return result;
+    }
+
+    public List<Vehicle> getVehicleByYear(int min, int max){
+        ArrayList<Vehicle> result = new ArrayList<>();
+
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getYear() >= min && vehicle.getYear() <= max){
+                result.add(vehicle);
+            }
+        }
+        return result;
+    }
+
+    public List<Vehicle> getVehicleByColor(String color){
+        ArrayList<Vehicle> result = new ArrayList<>();
+
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getColor().equalsIgnoreCase(color)){
+                result.add(vehicle);
+            }
+        }
+        return result;
+    }
+
+    public List<Vehicle> getVehicleByMileage(int max, int min){
+        ArrayList<Vehicle> result = new ArrayList<>();
+
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getOdometer() >= min && vehicle.getOdometer() <= max){
+                result.add(vehicle);
+            }
+        }
+        return result;
+    }
+
+    public List<Vehicle> getVehicleByType(String type){
+        ArrayList<Vehicle> result = new ArrayList<>();
+
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getVehicleType().equalsIgnoreCase(type)){
+                result.add(vehicle);
+            }
+        }
+        return result;
+    }
+
 
 }
