@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-import java.util.List;
+import java.util.*;
 
 public class UserInterface {
 
@@ -111,21 +111,48 @@ public class UserInterface {
     }
 
     public void processGetByPriceRequest() {
+        float minPrice = ConsoleHelper.promptForFloat("Please enter the minimum price range you're searching for");
+        float maxPrice = ConsoleHelper.promptForFloat("Please enter the maximum price range you're searching for");
+
+        List<Vehicle> vehicles = dealership.getVehicleByPrice(minPrice, maxPrice);
+        displayVehicles(vehicles);
     }
 
     public void processGetByMakeModelRequest() {
+        java.lang.String makeRequest = ConsoleHelper.promptForString("Please enter the make");
+        java.lang.String modelRequest = ConsoleHelper.promptForString("Please enter the make");
+
+        List<Vehicle> vehicles = dealership.getVehicleByMakeModel(makeRequest, modelRequest);
+        displayVehicles(vehicles);
     }
 
+
     public void processGetByYearRequest() {
+        int minimumYear = ConsoleHelper.promptForInt("Please enter the minimum year range you're searching for");
+        int maximumYear = ConsoleHelper.promptForInt("Please enter the maximum year range you're searching for");
+
+        List<Vehicle> vehicles = dealership.getVehicleByYear(minimumYear, maximumYear);
+        displayVehicles(vehicles);
     }
 
     public void processGetByColorRequest() {
+        java.lang.String colorRequest = ConsoleHelper.promptForString("Please enter the color");
+        List<Vehicle> vehicles = dealership.getVehicleByColor(colorRequest);
+        displayVehicles(vehicles);
     }
 
     public void processGetByMileageRequest() {
+        int minimumMileage = ConsoleHelper.promptForInt("Please enter the minimum mileage range you're searching for");
+        int maximumMileage = ConsoleHelper.promptForInt("Please enter the maximum mileage range you're searching for");
+
+        List<Vehicle> vehicles = dealership.getVehicleByMileage(minimumMileage, maximumMileage);
+        displayVehicles(vehicles);
     }
 
     public void processGetByVehicleTypeRequest() {
+        java.lang.String vehicleTypeRequest = ConsoleHelper.promptForString("Please enter the vehicle type");
+        List<Vehicle> vehicles = dealership.getVehicleByType(vehicleTypeRequest);
+        displayVehicles(vehicles);
     }
 
     public void processGetAllVehiclesByRequest() {

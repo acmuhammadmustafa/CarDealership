@@ -78,7 +78,7 @@ public class Dealership {
         return result;
     }
 
-    public List<Vehicle> getVehicleByMileage(int max, int min) {
+    public List<Vehicle> getVehicleByMileage(int min, int max) {
         ArrayList<Vehicle> result = new ArrayList<>();
 
         for (Vehicle vehicle : inventory) {
