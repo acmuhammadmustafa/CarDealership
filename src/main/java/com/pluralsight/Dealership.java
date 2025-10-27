@@ -105,7 +105,7 @@ public class Dealership {
         return "Dealership Information == " +
                 "Name: " + name +
                 " | Address: " + address +
-                " |Phone: " + phone +
+                " | Phone: " + phone +
                 " ==" + '\n';
     }
 }

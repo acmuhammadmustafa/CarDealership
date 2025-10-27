@@ -25,7 +25,6 @@ public class DealershipFileManager {
 
                 // Step 3: Uses the details above to create a Dealership object.
                 dealership = new Dealership(name, address, phone);
-                System.out.println(dealership);
             }
 
 // ----------------------------------------------------------------------------------------------------
@@ -49,7 +48,7 @@ public class DealershipFileManager {
                 // Step 6: Add the Vehicle to the Dealership's inventory
                 assert dealership != null;
                 dealership.getInventory().add(vehicle);
-                System.out.println(vehicle);
+//                System.out.println(vehicle);
             }
 
             // Step 7: Close the readers

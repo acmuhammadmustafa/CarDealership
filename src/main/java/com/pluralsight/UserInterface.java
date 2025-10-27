@@ -10,104 +10,102 @@ public class UserInterface {
     Dealership dealership;
     int command;
     // -----------------------------------------------------------
-    public UserInterface() {
+    public void userInterface() {
         init();
 
         System.out.println();
         System.out.println();
-        System.out.println("====== Reports Menu ======");
-        String display = "Choose an option: \n " +
-                "1) Price\n " +
-                "2) Make/Model\n " +
-                "3) Year\n " +
-                "4) Color\n " +
-                "5) Mileage\n " +
-                "6) Vehicle Type\n " +
-                "7) All Vehicles\n " +
-                "8) Add a Vehicle\n " +
-                "9) Remove a Vehicle\n " +
-                "0) Exit \n " +
-                "==========================\n";
+
         do {
+            String display = """
+                ====== Dealership Menu ======
+                 \
+                Choose an option:\s
+                 \
+                1) Price
+                 \
+                2) Make/Model
+                 \
+                3) Year
+                 \
+                4) Color
+                 \
+                5) Mileage
+                 \
+                6) Vehicle Type
+                 \
+                7) All Vehicles
+                 \
+                8) Add a Vehicle
+                 \
+                9) Remove a Vehicle
+                 \
+                99) Exit\s
+                 \
+                ==========================
+                """;
             System.out.println(display);
 
 
             command = ConsoleHelper.promptForInt("Enter your command".trim());
+            System.out.println();
             switch (command) {
                 case 1:
                     processGetByPriceRequest();
-                    System.out.println();
-                    System.out.println("======================");
-                    System.out.println();
+                    System.out.println("\n======================\n");
                     break;
 
                 case 2:
                     processGetByMakeModelRequest();
-                    System.out.println();
-                    System.out.println("======================");
-                    System.out.println();
+                    System.out.println("\n======================\n");
                     break;
 
                 case 3:
                     processGetByYearRequest();
-                    System.out.println();
-                    System.out.println("======================");
-                    System.out.println();
+                    System.out.println("\n======================\n");
                     break;
 
                 case 4:
                     processGetByColorRequest();
-                    System.out.println();
-                    System.out.println("======================");
-                    System.out.println();
+                    System.out.println("\n======================\n");
                     break;
 
                 case 5:
                     processGetByMileageRequest();
-                    System.out.println();
-                    System.out.println("======================");
-                    System.out.println();
+                    System.out.println("\n======================\n");
                     break;
 
                 case 6:
                     processGetByVehicleTypeRequest();
-                    System.out.println();
-                    System.out.println("======================");
-                    System.out.println();
+                    System.out.println("\n======================\n");
                     break;
 
                 case 7:
                     processGetAllVehiclesByRequest();
-                    System.out.println();
-                    System.out.println("======================");
-                    System.out.println();
+                    System.out.println("\n======================\n");
                     break;
 
                 case 8:
                     processAddVehicleRequest();
-                    System.out.println();
-                    System.out.println("======================");
-                    System.out.println();
+                    System.out.println("\n======================\n");
                     break;
 
                 case 9:
                     processRemoveVehicleRequest();
-                    System.out.println();
-                    System.out.println("======================");
-                    System.out.println();
+                    System.out.println("\n======================\n");
                     break;
 
-                case 0:
+                case 99:
                     return;
 
                 default:
                     System.out.println("Invalid input. Please enter a valid option.");
-                    System.out.println("======================");
+                    System.out.println("======================\n");
             }
         } while (true);
     }
 
-    public void init() {
+    private void init() {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
         this.dealership = dealershipFileManager.getDealership();
     }
@@ -141,8 +139,6 @@ public class UserInterface {
 
     public void processRemoveVehicleRequest() {
     }
-
-
 
     private void displayVehicles(List<Vehicle> vehicles) {
         for (Vehicle vehicle : vehicles) {
