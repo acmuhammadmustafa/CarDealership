@@ -99,13 +99,13 @@ public class Dealership {
         }
         return result;
     }
-
+// ----------------------------------------------------------------
     @Override
     public String toString() {
         return "Dealership Information == " +
                 "Name: " + name +
                 " | Address: " + address +
                 " |Phone: " + phone +
-                " ==";
+                " ==" + '\n';
     }
 }

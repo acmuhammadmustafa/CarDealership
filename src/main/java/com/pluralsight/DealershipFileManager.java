@@ -6,7 +6,7 @@ public class DealershipFileManager {
 
     // File Reader
 
-    public void getDealership() {
+    public Dealership getDealership() {
         Dealership dealership = null;  // Recognizes dealership as null.
 
         try {
@@ -60,6 +60,7 @@ public class DealershipFileManager {
             System.out.println("Something went wrong..");
         }
 
+        return dealership;
     }
 
 // ----------------------------------------------------------------------------------------------------
