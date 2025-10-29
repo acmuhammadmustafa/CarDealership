@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-import java.time.format.DateTimeFormatter;
+import java.time.*;
 import java.util.*;
 
 public class Dealership {
@@ -17,7 +17,7 @@ public class Dealership {
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.inventory = new ArrayList<Vehicle>();
+        this.inventory = new ArrayList<>();
     }
 
     public String getName() {
@@ -103,6 +103,15 @@ public class Dealership {
 
     public void addVehicle(Vehicle v){
         this.inventory.add(v);
+    }
+
+
+    public List<Vehicle> getAllVehicles() {
+        return this.inventory;
+    }
+
+    public void removeVehicle(Vehicle v) {
+        this.inventory.remove(v);
     }
 
 // ----------------------------------------------------------------

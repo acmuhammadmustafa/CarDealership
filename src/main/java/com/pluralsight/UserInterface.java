@@ -120,12 +120,11 @@ public class UserInterface {
 
     public void processGetByMakeModelRequest() {
         java.lang.String makeRequest = ConsoleHelper.promptForString("Please enter the make");
-        java.lang.String modelRequest = ConsoleHelper.promptForString("Please enter the make");
+        java.lang.String modelRequest = ConsoleHelper.promptForString("Please enter the model");
 
         List<Vehicle> vehicles = dealership.getVehicleByMakeModel(makeRequest, modelRequest);
         displayVehicles(vehicles);
     }
-
 
     public void processGetByYearRequest() {
         int minimumYear = ConsoleHelper.promptForInt("Please enter the minimum year range you're searching for");
@@ -136,7 +135,7 @@ public class UserInterface {
     }
 
     public void processGetByColorRequest() {
-        java.lang.String colorRequest = ConsoleHelper.promptForString("Please enter the color");
+        java.lang.String colorRequest = ConsoleHelper.promptForString("Please enter vehicle's color");
         List<Vehicle> vehicles = dealership.getVehicleByColor(colorRequest);
         displayVehicles(vehicles);
     }
@@ -166,7 +165,7 @@ public class UserInterface {
         String getMake = ConsoleHelper.promptForString("Enter vehicle's make");
         String getModel = ConsoleHelper.promptForString("Enter vehicle's model");
         String getType = ConsoleHelper.promptForString("Enter vehicle's type");
-        String getColor = ConsoleHelper.promptForString("Enter vehicle's type");
+        String getColor = ConsoleHelper.promptForString("Enter vehicle's color");
         int getOdo = ConsoleHelper.promptForInt("Enter vehicle's odometer");
         double getPrice = ConsoleHelper.promptForDouble("Enter vehicle's price");
 
@@ -180,6 +179,33 @@ public class UserInterface {
     }
 
     public void processRemoveVehicleRequest() {
+        // Show all vehicles so user can see VINs
+        System.out.println("Current inventory:");
+        displayVehicles(dealership.getAllVehicles());
+
+        // Prompt for VIN
+        int vinToRemove = ConsoleHelper.promptForInt("Enter the VIN of the vehicle to remove");
+
+        // Try to find the vehicle
+        Vehicle vehicleToRemove = null;
+        for (Vehicle vehicle : dealership.getAllVehicles()) {
+            if (vehicle.getVin() == vinToRemove) {
+                vehicleToRemove = vehicle;
+                break;
+            }
+        }
+
+        // Remove if found
+        if (vehicleToRemove != null) {
+            dealership.removeVehicle(vehicleToRemove);
+            System.out.println("Vehicle removed successfully!");
+
+            // Save the updated dealership
+            DealershipFileManager fm = new DealershipFileManager();
+            fm.saveDealership(dealership);
+        } else {
+            System.out.println("Vehicle with VIN " + vinToRemove + " not found.");
+        }
     }
 
     private void displayVehicles(List<Vehicle> vehicles) {
