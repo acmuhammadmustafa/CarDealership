@@ -99,6 +99,12 @@ public class Dealership {
         }
         return result;
     }
+
+
+    public void addVehicle(Vehicle v){
+        this.inventory.add(v);
+    }
+
 // ----------------------------------------------------------------
     @Override
     public String toString() {

@@ -65,25 +65,44 @@ public class DealershipFileManager {
 // ----------------------------------------------------------------------------------------------------
 
     // File Writer:
-    private static void saveDealership(Dealership inventory){
+    public void saveDealership(Dealership dealership){
 
         // ALL OF THIS WILL NEED UPDATING:
 
 
-//        try  {
-//            //Create a FileWriter and BufferedWriter:
-//            FileWriter fw = new FileWriter("inventory.csv",true);
-//            BufferedWriter bw = new BufferedWriter(fw);
-//            //Create a new line and formatting the way the information will be written into transaction.csv.
-//            bw.newLine();
-//            bw.write(inventory.getName() + "|" + inventory.getAddress() + "|" + inventory.getPhone());
-//            //Close the BufferedWriter. (FileWriter being closed is not necessary as BufferedWriter wraps around it.)
-//            bw.close();
-//        } catch (IOException e) {
-//            System.out.println("Something is wrong...");
-//        }
+        try  {
+            //Create a FileWriter and BufferedWriter:
+            FileWriter fw = new FileWriter("inventory.csv");
+            BufferedWriter bw = new BufferedWriter(fw);
+            //Create a new line and formatting the way the information will be written into transaction.csv.
+            bw.newLine();
+        //    bw.write(inventory.getVin() + "|" + inventory.getYear() + "|" + inventory.getMake() + "|" + inventory.getModel() + "|" + inventory.getVehicleType() + "|" + inventory.getColor()  + "|" + inventory.getOdometer()  + "|" + inventory.getPrice());
+            //Close the BufferedWriter. (FileWriter being closed is not necessary as BufferedWriter wraps around it.)
+            bw.close();
+        } catch (IOException e) {
+            System.out.println("Something is wrong...");
+        }
     }
 
+    // File Writer:
+    private static void addVehicleToDealership(Vehicle inventory){
+
+        // ALL OF THIS WILL NEED UPDATING:
+
+
+        try  {
+            //Create a FileWriter and BufferedWriter:
+            FileWriter fw = new FileWriter("inventory.csv",true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            //Create a new line and formatting the way the information will be written into transaction.csv.
+            bw.newLine();
+            bw.write(inventory.getVin() + "|" + inventory.getYear() + "|" + inventory.getMake() + "|" + inventory.getModel() + "|" + inventory.getVehicleType() + "|" + inventory.getColor()  + "|" + inventory.getOdometer()  + "|" + inventory.getPrice());
+            //Close the BufferedWriter. (FileWriter being closed is not necessary as BufferedWriter wraps around it.)
+            bw.close();
+        } catch (IOException e) {
+            System.out.println("Something is wrong...");
+        }
+    }
 
 
 
